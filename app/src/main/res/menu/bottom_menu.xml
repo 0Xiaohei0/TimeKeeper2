@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/timerFragment"
+        android:icon="@drawable/ic_time_icon"
+        android:title="@string/timer_menu_item" />
+    <item
+        android:id="@+id/dataFragment"
+        android:icon="@drawable/ic_data_icon"
+        android:title="@string/data_menu_item" />
+</menu>
