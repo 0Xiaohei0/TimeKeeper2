@@ -1,5 +1,6 @@
 package com.example.timekeeper2
 
+import android.content.Context
 import android.os.Bundle
 import android.os.SystemClock
 import androidx.fragment.app.Fragment
@@ -8,7 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Chronometer
-import android.widget.Toast
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 /**
  * A simple [Fragment] subclass.
@@ -33,12 +36,16 @@ class TimerFragment : Fragment() {
         val continueBT : Button = view.findViewById(R.id.continueBT)
         val resetBT : Button = view.findViewById(R.id.resetBT)
 
+
+
         pauseBT.visibility = View.INVISIBLE
         continueBT.visibility = View.INVISIBLE
         resetBT.visibility = View.INVISIBLE
 
         var timeWhenStopped : Long = 0
         var timeToSave : Long
+
+
         startBT.setOnClickListener{ view->
             timerText.base = SystemClock.elapsedRealtime()
             timerText.start()
@@ -60,8 +67,19 @@ class TimerFragment : Fragment() {
             resetBT.visibility = View.INVISIBLE
         }
         resetBT.setOnClickListener{ view->
+
+            val currentTime = LocalDateTime.now()
+            var formatter = DateTimeFormatter
+                .ofPattern("yyyy-MM-dd")
+
             timeToSave=-(timeWhenStopped)/1000
+            var dateToSave = formatter.format(currentTime)
+
+            val DBOpenHelper = DatabaseHelper(context = requireContext())
+            var data = timeDataStructure(dateToSave, timeToSave.toInt())
+            DBOpenHelper.insertData(data)
            // Toast.makeText(this, timeToSave.toString(), Toast.LENGTH_LONG).show()
+
             timerText.base = SystemClock.elapsedRealtime()
             timeWhenStopped= 0
             resetBT.visibility = View.INVISIBLE

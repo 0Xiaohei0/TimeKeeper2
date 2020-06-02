@@ -4,10 +4,11 @@
     <string name="cont">Continue</string>
     <string name="pause">pause</string>
     <string name="reset">Reset</string>
-    <string name="data_page_text">This is the data page</string>
+    <string name="data_page_text">Total Time Today:</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="timer_menu_item">Timer</string>
     <string name="data_menu_item">Data</string>
     <string name="timer_page_label">Timer</string>
     <string name="data_page_label">Data</string>
+    <string name="place_holder">222</string>
 </resources>
