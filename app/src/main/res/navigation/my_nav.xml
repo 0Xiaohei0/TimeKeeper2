@@ -14,5 +14,18 @@
         android:id="@+id/dataFragment"
         android:name="com.example.timekeeper2.DataFragment"
         android:label="@string/data_page_label"
-        tools:layout="@layout/fragment_data" />
+        tools:layout="@layout/fragment_data" >
+        <action
+            android:id="@+id/NavigateToEditDataFragment"
+            app:destination="@id/editDataFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editDataFragment"
+        android:name="com.example.timekeeper2.editDataFragment"
+        android:label="@string/data_edit_page_label"
+        tools:layout="@layout/fragment_edit_data">
+        <action
+            android:id="@+id/action_editDataFragment_to_dataFragment"
+            app:destination="@id/dataFragment" />
+    </fragment>
 </navigation>

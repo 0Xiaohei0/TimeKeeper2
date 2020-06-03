@@ -2,11 +2,10 @@ package com.example.timekeeper2
 
 import android.os.Bundle
 import android.text.format.DateUtils
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -21,6 +20,24 @@ class DataFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_data, container, false)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        setHasOptionsMenu(true)
+        super.onCreate(savedInstanceState)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater!!.inflate(R.menu.data_page_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item!!.itemId
+        if(id == R.id.edit_data){
+            view?.let { Navigation.findNavController(it).navigate((R.id.NavigateToEditDataFragment)) }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -40,14 +57,13 @@ class DataFragment : Fragment() {
         //calculate current time today
         var totalTimeToday : Int =0
         for (i in 0 until dataList.size){
-            if(currentDate==dataList.get(i).date)
-            totalTimeToday+= dataList.get(i).time
+            if(currentDate== dataList[i].date)
+            totalTimeToday+= dataList[i].time
         }
         //set text
         var totalTimeTodayString : String = secToTime(totalTimeToday)
         totalTimeText.setText(totalTimeTodayString)
     }
-
 
     private fun secToTime(sec: Int): String {
         val seconds = sec % 60
@@ -63,5 +79,4 @@ class DataFragment : Fragment() {
         }
         return String.format("00:%02d:%02d", minutes, seconds)
     }
-
 }
