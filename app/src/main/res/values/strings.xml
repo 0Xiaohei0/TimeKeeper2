@@ -10,7 +10,7 @@
     <string name="data_menu_item">Data</string>
     <string name="timer_page_label">Timer</string>
     <string name="data_page_label">Data</string>
-    <string name="data_edit_page_label">Data Edit</string>
+    <string name="data_browse_page_label">Data Browse</string>
     <string name="place_holder">222</string>
     <string name="edit_data">Edit Data</string>
 </resources>

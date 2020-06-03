@@ -17,13 +17,13 @@
         tools:layout="@layout/fragment_data" >
         <action
             android:id="@+id/NavigateToEditDataFragment"
-            app:destination="@id/editDataFragment" />
+            app:destination="@id/browseDataFragment" />
     </fragment>
     <fragment
-        android:id="@+id/editDataFragment"
-        android:name="com.example.timekeeper2.editDataFragment"
-        android:label="@string/data_edit_page_label"
-        tools:layout="@layout/fragment_edit_data">
+        android:id="@+id/browseDataFragment"
+        android:name="com.example.timekeeper2.browseDataFragment"
+        android:label="@string/data_browse_page_label"
+        tools:layout="@layout/fragment_browse_data">
         <action
             android:id="@+id/action_editDataFragment_to_dataFragment"
             app:destination="@id/dataFragment" />

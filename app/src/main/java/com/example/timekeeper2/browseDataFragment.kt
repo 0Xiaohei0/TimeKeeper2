@@ -7,19 +7,19 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.fragment_edit_data.*
+import kotlinx.android.synthetic.main.fragment_browse_data.*
 
 /**
  * A simple [Fragment] subclass.
  */
-class editDataFragment : Fragment() , TimeRecyclerAdapter.OnTimeItemClickedListener {
+class browseDataFragment : Fragment() , TimeRecyclerAdapter.OnTimeItemClickedListener {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_edit_data, container, false)
+        return inflater.inflate(R.layout.fragment_browse_data, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
