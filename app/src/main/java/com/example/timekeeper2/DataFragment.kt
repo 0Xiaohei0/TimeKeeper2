@@ -28,14 +28,14 @@ class DataFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater!!.inflate(R.menu.data_page_menu, menu)
+        inflater.inflate(R.menu.data_page_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id = item!!.itemId
+        val id = item.itemId
         if(id == R.id.edit_data){
-            view?.let { Navigation.findNavController(it).navigate((R.id.NavigateToEditDataFragment)) }
+            view?.let { Navigation.findNavController(it).navigate((R.id.NavigateToBrowseDataFragment)) }
         }
         return super.onOptionsItemSelected(item)
     }

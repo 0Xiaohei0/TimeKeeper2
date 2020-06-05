@@ -16,7 +16,7 @@
         android:label="@string/data_page_label"
         tools:layout="@layout/fragment_data" >
         <action
-            android:id="@+id/NavigateToEditDataFragment"
+            android:id="@+id/NavigateToBrowseDataFragment"
             app:destination="@id/browseDataFragment" />
     </fragment>
     <fragment
@@ -27,5 +27,13 @@
         <action
             android:id="@+id/action_editDataFragment_to_dataFragment"
             app:destination="@id/dataFragment" />
+        <action
+            android:id="@+id/NavigateToEditDataFragment"
+            app:destination="@id/editDataFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/editDataFragment"
+        android:name="com.example.timekeeper2.EditDataFragment"
+        android:label="fragment_edit_data"
+        tools:layout="@layout/fragment_edit_data" />
 </navigation>

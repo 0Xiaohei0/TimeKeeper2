@@ -51,8 +51,12 @@ class TimerFragment : Fragment() {
             continueBT.visibility = View.INVISIBLE
             pauseBT.visibility = View.INVISIBLE
         } else {//if timer has started
+            startBT.visibility = savedInstanceState.getInt("startBT_visibility")
+            resetBT.visibility = savedInstanceState.getInt("resetBT_visibility")
+            continueBT.visibility = savedInstanceState.getInt("continueBT_visibility")
+            pauseBT.visibility = savedInstanceState.getInt("pauseBT_visibility")
             timeWhenStopped = savedInstanceState.getLong("timeWhenStopped")
-            continueTimer()
+            timerText.base = SystemClock.elapsedRealtime() + timeWhenStopped
         }
 
 
@@ -121,10 +125,6 @@ class TimerFragment : Fragment() {
         DBOpenHelper.close()
     }
 
-    override fun onPause() {
-        super.onPause()
-    }
-
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         if (startBT.visibility == View.VISIBLE) {//if the timer has started
@@ -132,7 +132,6 @@ class TimerFragment : Fragment() {
         }else{
             outState.putBoolean("timerStarted", true)
         }
-            pauseTimer()
             outState.putInt("startBT_visibility", startBT.visibility)
             outState.putInt("resetBT_visibility", resetBT.visibility)
             outState.putInt("continueBT_visibility", continueBT.visibility)
