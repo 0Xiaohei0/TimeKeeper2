@@ -57,7 +57,20 @@ class TimerFragment : Fragment() {
             pauseBT.visibility = savedInstanceState.getInt("pauseBT_visibility")
             timeWhenStopped = savedInstanceState.getLong("timeWhenStopped")
             timerText.base = SystemClock.elapsedRealtime() + timeWhenStopped
+            if(pauseBT.visibility == View.VISIBLE){//if the timer was running
+                continueTimer()//continue timer
+            }
         }
+//timer running
+        //pause timer
+        //save button states
+        //restore button states
+        //continue timer
+
+
+        //timer not running
+            ////save button states
+            //restore button states
 
 
 
@@ -136,7 +149,10 @@ class TimerFragment : Fragment() {
             outState.putInt("resetBT_visibility", resetBT.visibility)
             outState.putInt("continueBT_visibility", continueBT.visibility)
             outState.putInt("pauseBT_visibility", pauseBT.visibility)
-            outState.putLong("timeWhenStopped", timeWhenStopped)
+        if(pauseBT.visibility == View.VISIBLE) {//if the timer is running
+            pauseTimer()//save the current time
+        }
+        outState.putLong("timeWhenStopped", timeWhenStopped)
     }
 
     private fun secToTime(sec: Int): String {
