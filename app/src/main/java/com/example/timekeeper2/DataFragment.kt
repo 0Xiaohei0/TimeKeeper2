@@ -1,7 +1,6 @@
 package com.example.timekeeper2
 
 import android.os.Bundle
-import android.text.format.DateUtils
 import android.view.*
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -44,7 +43,9 @@ class DataFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         //find components
-        val totalTimeText : TextView = view.findViewById(R.id.TotalTimeDisplayed)
+        val totalTimeTodayDisplayed : TextView = view.findViewById(R.id.TotalTimeTodayDisplayed)
+        val totalTimeDisplayed : TextView = view.findViewById(R.id.TotalTimeDisplayed)
+
         val DBOpenHelper = DatabaseHelper(context = requireContext())
         var dataList = DBOpenHelper.readData()
 
@@ -56,13 +57,18 @@ class DataFragment : Fragment() {
 
         //calculate current time today
         var totalTimeToday : Int =0
+        var totalTime : Int =0
         for (i in 0 until dataList.size){
+            totalTime+= dataList[i].time
             if(currentDate== dataList[i].date)
             totalTimeToday+= dataList[i].time
         }
         //set text
         var totalTimeTodayString : String = secToTime(totalTimeToday)
-        totalTimeText.setText(totalTimeTodayString)
+        var totalTimeString : String = secToTime(totalTime)
+
+        totalTimeTodayDisplayed.text = totalTimeTodayString
+        totalTimeDisplayed.text = totalTimeString
     }
 
     private fun secToTime(sec: Int): String {

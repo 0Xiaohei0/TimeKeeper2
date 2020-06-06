@@ -118,24 +118,27 @@ class TimerFragment : Fragment() {
     }
 
     private fun saveTimeData() {
-        val currentTime = LocalDateTime.now()
-        var formatterDate = DateTimeFormatter
-            .ofPattern("yyyy-MM-dd")
-
-        var formatterTimeAdd = DateTimeFormatter.ofPattern("HH:mm:ss")
-
-
         timeToSave = -(timeWhenStopped) / 1000
-        var timeToSaveString = secToTime(timeToSave.toInt())
-        var dateToSave = formatterDate.format(currentTime)
-        var addTimeToSave = formatterTimeAdd.format(currentTime)
+        if(timeToSave<1){
+            Toast.makeText(context, R.string.time_too_short, Toast.LENGTH_LONG).show()
+        }else {
+            val currentTime = LocalDateTime.now()
+            var formatterDate = DateTimeFormatter
+                .ofPattern("yyyy-MM-dd")
+            var formatterTimeAdd = DateTimeFormatter.ofPattern("HH:mm:ss")
 
-        val DBOpenHelper = DatabaseHelper(context = requireContext())
-        var data = timeDataStructure(dateToSave,addTimeToSave, timeToSaveString,timeToSave.toInt())
-        DBOpenHelper.insertData(data)
-        //Toast.makeText(context, data.timeString, Toast.LENGTH_LONG).show()
+            var timeToSaveString = secToTime(timeToSave.toInt())
+            var dateToSave = formatterDate.format(currentTime)
+            var addTimeToSave = formatterTimeAdd.format(currentTime)
 
-        DBOpenHelper.close()
+            val DBOpenHelper = DatabaseHelper(context = requireContext())
+            var data =
+                timeDataStructure(dateToSave, addTimeToSave, timeToSaveString, timeToSave.toInt())
+            DBOpenHelper.insertData(data)
+            Toast.makeText(context, R.string.time_saved, Toast.LENGTH_LONG).show()
+
+            DBOpenHelper.close()
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

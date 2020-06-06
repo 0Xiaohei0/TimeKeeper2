@@ -34,6 +34,6 @@
     <fragment
         android:id="@+id/editDataFragment"
         android:name="com.example.timekeeper2.EditDataFragment"
-        android:label="fragment_edit_data"
+        android:label="@string/edit_data"
         tools:layout="@layout/fragment_edit_data" />
 </navigation>

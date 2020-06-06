@@ -4,13 +4,21 @@
     <string name="cont">Continue</string>
     <string name="pause">pause</string>
     <string name="reset">save</string>
-    <string name="data_page_text">Total Time Today:</string>
+    <string name="time_saved">Time saved (๑•̀ㅂ•́)و✧</string>
+    <string name="time_too_short">Time is too short (￣△￣；)</string>
+
+    <string name="data_menu_item">Data</string>
+    <string name="data_page_label">Data</string>
+    <string name="data_page_text">Total Time Practiced Today:</string>
+    <string name="total_time_text">Total Time Practiced:</string>
+
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="timer_menu_item">Timer</string>
-    <string name="data_menu_item">Data</string>
+
     <string name="timer_page_label">Timer</string>
-    <string name="data_page_label">Data</string>
+
     <string name="data_browse_page_label">Data Browse</string>
-    <string name="place_holder">222</string>
+    <string name="place_holder">00:00:00</string>
     <string name="edit_data">Edit Data</string>
 </resources>
