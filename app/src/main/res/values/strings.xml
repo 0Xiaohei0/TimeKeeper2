@@ -9,7 +9,8 @@
 
     <string name="data_menu_item">Data</string>
     <string name="data_page_label">Data</string>
-    <string name="data_page_text">Total Time Practiced Today:</string>
+    <string name="data_page_text">Time Practiced Today:</string>
+    <string name="total_time_this_week_text">Time Practiced past 7 days:</string>
     <string name="total_time_text">Total Time Practiced:</string>
 
 

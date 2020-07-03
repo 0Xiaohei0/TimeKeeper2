@@ -1,12 +1,17 @@
 package com.example.timekeeper2
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.*
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * A simple [Fragment] subclass.
@@ -45,6 +50,7 @@ class DataFragment : Fragment() {
         //find components
         val totalTimeTodayDisplayed : TextView = view.findViewById(R.id.TotalTimeTodayDisplayed)
         val totalTimeDisplayed : TextView = view.findViewById(R.id.TotalTimeDisplayed)
+        val totalTimeThisWeekDisplayed : TextView = view.findViewById(R.id.totalTimeThisWeekDisplayed)
 
         val DBOpenHelper = DatabaseHelper(context = requireContext())
         var dataList = DBOpenHelper.readData()
@@ -54,6 +60,11 @@ class DataFragment : Fragment() {
         var formatter = DateTimeFormatter
             .ofPattern("yyyy-MM-dd")
         var currentDate = formatter.format(currentTime)
+        //get date from past week
+        val dateFromPastWeek = ArrayList<String>()
+        for(i in 0 until 7){
+            dateFromPastWeek.add(getCalculatedDate("yyyy-MM-dd", -i))
+        }
 
         //calculate current time today
         var totalTimeToday : Int =0
@@ -63,12 +74,32 @@ class DataFragment : Fragment() {
             if(currentDate== dataList[i].date)
             totalTimeToday+= dataList[i].time
         }
+
+        //calculate time this week (this is a horrible approach >_<)
+        var totalTimeThisWeek : Int =0
+        for (i in 0 until dataList.size){
+            for (j in 0 until dateFromPastWeek.size) {
+                if (dateFromPastWeek[j] == dataList[i].date)
+                    totalTimeThisWeek += dataList[i].time
+            }
+        }
+
         //set text
         var totalTimeTodayString : String = secToTime(totalTimeToday)
         var totalTimeString : String = secToTime(totalTime)
+        var totalTimeThisWeekString : String = secToTime(totalTimeThisWeek)
 
         totalTimeTodayDisplayed.text = totalTimeTodayString
         totalTimeDisplayed.text = totalTimeString
+        totalTimeThisWeekDisplayed.text = totalTimeThisWeekString
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    fun getCalculatedDate(dateFormat: String?, days: Int): String {
+        val cal = Calendar.getInstance()
+        val s = SimpleDateFormat(dateFormat)
+        cal.add(Calendar.DAY_OF_YEAR, days)
+        return s.format(Date(cal.timeInMillis))
     }
 
     private fun secToTime(sec: Int): String {

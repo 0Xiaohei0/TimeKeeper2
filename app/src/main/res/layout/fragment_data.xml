@@ -42,7 +42,21 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TotalTimeTodayDisplayed"
-        app:layout_constraintVertical_bias="0.094" />
+        app:layout_constraintVertical_bias="0.382" />
+
+    <TextView
+        android:id="@+id/totalTimeThisWeekText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="@string/total_time_this_week_text"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TotalTimeTodayDisplayed"
+        app:layout_constraintVertical_bias="0.089" />
 
     <TextView
         android:id="@+id/TotalTimeTodayDisplayed"
@@ -68,5 +82,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/totalTimeText"
         app:layout_constraintVertical_bias="0.075"
+        tools:text="@string/place_holder" />
+
+    <TextView
+        android:id="@+id/totalTimeThisWeekDisplayed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/totalTimeThisWeekText"
+        app:layout_constraintVertical_bias="0.055"
         tools:text="@string/place_holder" />
 </androidx.constraintlayout.widget.ConstraintLayout>
