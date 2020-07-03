@@ -26,6 +26,8 @@ class browseDataFragment : Fragment() , TimeRecyclerAdapter.OnTimeItemClickedLis
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
         val DBOpenHelper = DatabaseHelper(context = requireContext())
         var dataList = DBOpenHelper.readData()
 
@@ -37,7 +39,7 @@ class browseDataFragment : Fragment() , TimeRecyclerAdapter.OnTimeItemClickedLis
     }
 
     override fun onItemClick(timeData: timeDataStructure) {
-        view?.let { Navigation.findNavController(it).navigate((R.id.NavigateToEditDataFragment))}
+        //view?.let { Navigation.findNavController(it).navigate((R.id.NavigateToEditDataFragment))}
     }
 
 }
